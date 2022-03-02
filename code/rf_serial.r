@@ -8,9 +8,9 @@ i_test = sample.int(n, n_test)
 train = LetterRecognition[-i_test, ]
 test = LetterRecognition[i_test, ]
 
-rf.all = randomForest(lettr ~ ., train, ntree = 500, norm.votes = FALSE)
+rf.all = randomForest(lettr ~ ., train, ntree = 10, norm.votes = FALSE)
 pred = predict(rf.all, test)
-
+  
 correct = sum(pred == test$lettr)
 cat("Proportion Correct:", correct/(n_test), "\n")
-
+plot(rf.all)
